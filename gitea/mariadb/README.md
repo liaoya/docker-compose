@@ -1,4 +1,4 @@
-# Gitea with SQLite
+# Gitea with MariaDB
 
 ## How to run it
 
@@ -10,10 +10,11 @@ docker-compose up -d
 ```
 
 ```fish
-HOSTNAME=(hostname -f)
-echo $HOSTNAME | grep -s -q "\." || HOSTNAME=(hostname -I | cut -d " " -f 1)
+set -xg HOSTNAME (hostname -f)
+echo $HOSTNAME | grep -s -q "\."; or set -xg HOSTNAME (hostname -I | cut -d " " -f 1)
 set -xg HOSTNAME
 docker-compose up -d
 ```
 
-Run `bash init.sh` on the machine run the docker-compose can init gitea.
+- Wait some time for mariadb for initialization
+- Run `bash init.sh` on the machine run the docker-compose can init gitea.

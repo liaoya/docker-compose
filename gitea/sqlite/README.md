@@ -10,9 +10,8 @@ docker-compose up -d
 ```
 
 ```fish
-HOSTNAME=(hostname -f)
-echo $HOSTNAME | grep -s -q "\." || HOSTNAME=(hostname -I | cut -d " " -f 1)
-set -xg HOSTNAME
+set -xg HOSTNAME (hostname -f)
+echo $HOSTNAME | grep -s -q "\."; or set -xg HOSTNAME (hostname -I | cut -d " " -f 1)
 docker-compose up -d
 ```
 
