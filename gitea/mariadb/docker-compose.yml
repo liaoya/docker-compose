@@ -10,6 +10,8 @@ services:
   gitea:
     image: gitea/gitea:1.4.3
     restart: always
+    depends_on: 
+      - mariadb
     environment:
       - APP_NAME=Gitea Host
       - RUN_MODE=prod

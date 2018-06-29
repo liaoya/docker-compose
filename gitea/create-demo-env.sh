@@ -1,21 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e
+set -a -e
 
 [[ $(command -v http) ]] && [[ $(command -v jq) ]] || { echo "http and jq are required"; exit 1; }
-EMAIL_DOMAIN=$(hostname -f)
 
-GITEA_ADMIN=${GITEA_ADMIN:-giteadmin}
-GITEA_ADMIN_PASSWORD=${GITEA_ADMIN_PASSWORD:-admin123}
+THIS_DIR=$(dirname $(readlink -f ${BASH_SOURCE}))
+source ${THIS_DIR}/env.sh
 
-DEMO_USER_NAME=${DEMO_USER_NAME:-giteauser}
-DEMO_USER_PASSWORD=${DEMO_USER_PASSWORD:-gitea}
-DEMO_USER_IS_ADMIN=${DEMO_USER_IS_ADMIN:-0}
-DEMO_USER_IS_LOCAL=${DEMO_USER_IS_LOCAL:-0}
-DEMO_ORG_NAME=${DEMO_ORG_NAME:-demo-org}
-DEMO_REPO_NAME=${DEMO_REPO_NAME:-demo-repo}
-
-if [[ ${DEMO_USER_IS_LOCAL} -gt 0 && -f ${HOME}/.ssh/id_rsa.pub ]]; then
+if [[ $(id -un) == ${DEMO_USER_NAME} && -f ${HOME}/.ssh/id_rsa.pub ]]; then
     title="$(cat ${HOME}/.ssh/id_rsa.pub | cut -d " " -f 3 | tr -d '\r' | tr -d '\n')"
     ssh_key="$(cat ${HOME}/.ssh/id_rsa.pub)"
 else

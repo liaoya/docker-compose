@@ -1,19 +1,14 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-[[ $(command -v http) ]] || { echo "http command is required"; exit 1; }
+set -a -e
 
-GITEA_ADMIN=${GITEA_ADMIN:-giteadmin}
-GITEA_ADMIN_PASSWORD=${GITEA_ADMIN_PASSWORD:-admin123}
-if [[ -z ${DOMAIN} ]]; then
-    DOMAIN=$(hostname -f)
-    echo ${DOMAIN} | grep -s -q "\." || DOMAIN=$(hostname -I | cut -d " " -f 1)
-    EMAIL_DOMAIN=$(hostname -f)
-else
-    EMAIL_DOMAIN=${DOMAIN}
-fi
-HTTP_PORT=${HTTP_PORT:-13000}
-SSH_PORT=${SSH_PORT:-10022}
-GITEA_URL=http://${DOMAIN}:${HTTP_PORT}/
+[[ $(command -v http) ]] || { echo "http and jq are required"; exit 1; }
+
+THIS_DIR=$(dirname $(readlink -f ${BASH_SOURCE}))
+source ${THIS_DIR}/../env.sh
+
+docker-compose -f ${THIS_DIR}/docker-compose.yml up -d
+sleep 10s
 
 http --timeout 120 -f POST :13000/install \
      db_type=SQLite3 db_path=/data/gitea/gitea.db \

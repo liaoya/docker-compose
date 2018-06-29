@@ -4,37 +4,11 @@
 
 Your need determine to use sqlite or mariadb at first
 
-If you want host's name or IP
+- Run `bash sqlite/init.sh` to create gitea instance with sqlite database
+- Run `bash mariadb/init.sh` to create gitea instance with mariadb database
 
-```bash
-DOMAIN=$(hostname -f)
-echo ${DOMAIN} | grep -s -q "\." || DOMAIN=$(hostname -I | cut -d " " -f 1)
-export DOMAIN
-docker-compose up -d
-```
+Run `bash create-demo-env.sh` to create a addtional demo user, group and repository
 
-```fish
-set -xg DOMAIN (hostname -f)
-echo $DOMAIN | grep -s -q "\."; or set -xg DOMAIN (hostname -I | cut -d " " -f 1)
-docker-compose up -d
-```
+## Customeize Gitea
 
-Run `bash init.sh` on the machine run the docker-compose can init gitea.
-
-## Setup other user, group and team
-
-```bash
-export DEMO_USER_NAME=$(id -un)
-export DEMO_USER_IS_LOCAL=1
-export DEMO_USER_IS_ADMIN=1
-
-bash create-demo-env.sh
-```
-
-```fish
-set -xg DEMO_USER_NAME (id -un)
-set -xg DEMO_USER_IS_LOCAL 1
-set -xg DEMO_USER_IS_ADMIN 1
-
-bash create-demo-env.sh
-```
+Take a look at `env.sh`, overwrite these values before create gitea instance
