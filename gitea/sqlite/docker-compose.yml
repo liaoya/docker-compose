@@ -11,8 +11,8 @@ services:
     environment:
       - APP_NAME=Gitea Host
       - RUN_MODE=prod
-      - DOMAIN=${HOSTNAME}
-      - ROOT_URL=http://${HOSTNAME}:13000
+      - DOMAIN=${DOMAIN}
+      - ROOT_URL=http://${DOMAIN}:13000
       - SSH_PORT=10022
       - DB_TYPE=sqlite3
       - DISABLE_REGISTRATION=true
