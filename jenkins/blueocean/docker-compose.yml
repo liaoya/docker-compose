@@ -5,7 +5,7 @@ volumes:
     external: false
 
 services:
-  blueocean:
+  jenkins:
     image: jenkinsci/blueocean:1.6.1
     restart: always
     ports:
