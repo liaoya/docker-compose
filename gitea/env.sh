@@ -1,10 +1,11 @@
 #!/bin/bash
+#shellcheck disable=SC2034
 
 GITEA_ADMIN=${GITEA_ADMIN:-giteadmin}
 GITEA_ADMIN_PASSWORD=${GITEA_ADMIN_PASSWORD:-admin123}
 if [[ -z ${DOMAIN} ]]; then
     DOMAIN=$(hostname -f)
-    echo ${DOMAIN} | grep -s -q "\." || DOMAIN=$(hostname -I | cut -d " " -f 1)
+    echo "${DOMAIN}" | grep -s -q "\\." || DOMAIN=$(hostname -I | cut -d " " -f 1)
     EMAIL_DOMAIN=$(hostname -f)
 else
     EMAIL_DOMAIN=${DOMAIN}
