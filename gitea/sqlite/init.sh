@@ -21,3 +21,5 @@ http --timeout 120 -f POST :13000/install \
      disable_registration=on require_sign_in_view=on \
      no_reply_address="noreply.org" \
      admin_name="${GITEA_ADMIN}" admin_passwd="${GITEA_ADMIN_PASSWORD}" admin_confirm_passwd="${GITEA_ADMIN_PASSWORD}" admin_email="${GITEA_ADMIN}@${EMAIL_DOMAIN}"
+
+bash "${THIS_DIR}/../create-demo-env.sh"
