@@ -7,9 +7,21 @@ THIS_DIR=$(dirname "${THIS_FILE}")
 [[ $(command -v shellcheck) ]] || { echo "Cannot find shellcheck"; exit 1; }
 
 SHELLCHECK_RESULT="true"
-while IFS= read -r -d '' shellfile
-do
-    shellcheck "${shellfile}" || SHELLCHECK_RESULT="false"
-done < <(find "${THIS_DIR}" -iname "*.sh" -print0)
+
+run_shellcheck() {
+    while IFS= read -r -d '' shellfile
+    do
+        shellcheck "${shellfile}" || SHELLCHECK_RESULT="false"
+    done < <(find "${1}" -iname "*.sh" -print0)
+}
+
+if [[ $# -eq 0 ]]; then
+    run_shellcheck "${THIS_DIR}"
+else
+    while (( "$#")); do
+        target_dir=$1; shift;
+        [[ -d "${target_dir}" ]] && run_shellcheck "${target_dir}"
+    done
+fi
 
 [[ ${SHELLCHECK_RESULT} == true ]] || exit 1
