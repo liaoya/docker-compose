@@ -1,0 +1,14 @@
+version: "3.0"
+
+volumes:
+  data:
+    driver: local
+
+services:
+  git-cache-http-server:
+    restart: always
+    build: .
+    ports:
+      - "1234:8080"
+    volumes:
+      - data:/data
