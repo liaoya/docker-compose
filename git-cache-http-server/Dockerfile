@@ -1,8 +1,10 @@
-FROM node:10.15.0-alpine
+FROM node:lts-alpine
 
-VOLUME [ "/data" ]
+RUN apk update \
+    && apk add bash git \
+    && npm install -g git+https://git@github.com/jonasmalacofilho/git-cache-http-server.git
 
-RUN apk add git && \
-    npm install -g git+https://git@github.com/jonasmalacofilho/git-cache-http-server.git
+EXPOSE 8080
+VOLUME /var/cache/git
 
 CMD ["/usr/local/bin/git-cache-http-server" "-c" "/data"]

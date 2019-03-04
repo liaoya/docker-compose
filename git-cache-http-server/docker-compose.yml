@@ -7,8 +7,16 @@ volumes:
 services:
   git-cache-http-server:
     restart: always
-    build: .
+    build:
+      context: .
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
     ports:
-      - "1234:8080"
+      - "8080:8080"
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+      - no_proxy=${no_proxy}
     volumes:
       - data:/data
