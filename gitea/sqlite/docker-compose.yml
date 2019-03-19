@@ -6,7 +6,7 @@ volumes:
 
 services:
   gitea:
-    image: gitea/gitea:1.7.3
+    image: gitea/gitea:1.7.4
     restart: always
     environment:
       - APP_NAME=Gitea Host

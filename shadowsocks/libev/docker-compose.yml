@@ -1,5 +1,5 @@
 shadowsocks:
-  image: shadowsocks/shadowsocks-libev:v3.2.3
+  image: shadowsocks/shadowsocks-libev:v3.2.5
   ports:
     - "8388:8388"
   environment:
