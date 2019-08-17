@@ -1,0 +1,7 @@
+v2ray:
+  image: v2ray/official:latest
+  ports:
+    - "${V2RAY_PORT}:${V2RAY_PORT}/udp"
+  restart: always
+  volumes:
+    - "./config.json:/etc/v2ray/config.json"

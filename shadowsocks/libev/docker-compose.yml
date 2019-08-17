@@ -1,7 +1,7 @@
 shadowsocks:
-  image: shadowsocks/shadowsocks-libev:v3.3.0
+  image: shadowsocks/shadowsocks-libev:v3.3.1
   ports:
-    - "${PORT}:8388"
+    - "${SHADOWSOCK_PORT}:8388"
   environment:
     - METHOD=aes-256-gcm
     - PASSWORD=${SHADOWSOCK_PASSWORD}
