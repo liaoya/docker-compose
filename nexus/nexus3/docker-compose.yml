@@ -1,0 +1,17 @@
+version: "3"
+
+volumes:
+  data:
+    driver: local
+
+services:
+  nexus:
+    environment:
+      NEXUS_CONTEXT: nexus3
+      INSTALL4J_ADD_VM_PARAMS: '-Xms2g -Xmx2g -XX:MaxDirectMemorySize=2g'
+    ports:
+      - "8081:8081"
+    image: sonatype/nexus3:3.18.1
+    restart: always
+    volumes:
+      - data:/nexus-data

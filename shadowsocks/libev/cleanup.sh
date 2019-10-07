@@ -7,4 +7,3 @@ THIS_DIR=$(dirname "${THIS_FILE}")
 source "${THIS_DIR}/env.sh"
 
 docker-compose -f "${THIS_DIR}/docker-compose.yml" down -v
-rm -f "${THIS_DIR}/config.json"

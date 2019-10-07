@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e -x
+set -a -e -x
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")
@@ -35,7 +35,6 @@ if [[ -n ${TYPE} && ! -f "${THIS_DIR}/vmess${TYPE}.json" ]]; then
 fi
 
 if [[ ${CLEAN} -gt 0 ]]; then
-    rm -f "${THIS_DIR}/.options"
     rm -f "${THIS_DIR}/config.json"
 fi
 #shellcheck disable=SC1090

@@ -1,5 +1,11 @@
 version: "3"
 
+kcptun:
+  image: xtaci/kcptun: v20190924
+  ports:
+    - 29900:29900/udp
+    - ${SHADOWSOCK_PORT}:12948
+
 shadowsocks:
   image: shadowsocks/shadowsocks-libev:v3.3.1
   ports:
