@@ -6,9 +6,9 @@ volumes:
 
 services:
   nexus:
-    restart: always
     image: sonatype/nexus:2.14.13
     ports:
       - "8081:8081"
+    restart: always
     volumes:
       - data:/sonatype-work

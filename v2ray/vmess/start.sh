@@ -32,6 +32,7 @@ done
 
 if [[ -n ${TYPE} && ! -f "${THIS_DIR}/vmess${TYPE}.json" ]]; then
     echo "Require 'vmess${TYPE}.json'"
+    exit 1
 fi
 
 if [[ ${CLEAN} -gt 0 ]]; then

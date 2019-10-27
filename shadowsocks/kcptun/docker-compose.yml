@@ -1,16 +1,18 @@
 version: "3"
 
-kcptun:
-  image: xtaci/kcptun: v20190924
-  ports:
-    - 29900:29900/udp
-    - ${SHADOWSOCK_PORT}:12948
+services: 
+  kcptun:
+    image: xtaci/kcptun:v20190924
+    ports:
+      - 29900:29900/udp
+      - ${SHADOWSOCK_PORT}:12948
+    restart: always
 
-shadowsocks:
-  image: shadowsocks/shadowsocks-libev:v3.3.1
-  ports:
-    - "${SHADOWSOCK_PORT}:8388"
-  environment:
-    - METHOD=aes-256-gcm
-    - PASSWORD=${SHADOWSOCK_PASSWORD}
-  restart: always
+  shadowsocks:
+    image: shadowsocks/shadowsocks-libev:v3.3.1
+    ports:
+      - "${SHADOWSOCK_PORT}:8388"
+    environment:
+      - METHOD=aes-256-gcm
+      - PASSWORD=${SHADOWSOCK_PASSWORD}
+    restart: always
