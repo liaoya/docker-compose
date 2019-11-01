@@ -2,11 +2,13 @@ version: "3"
 
 services: 
   kcptun:
+    command: ["/bin/server", "-c", "/etc/kcptun.json"]
     image: xtaci/kcptun:v20190924
     ports:
-      - 29900:29900/udp
-      - ${SHADOWSOCK_PORT}:12948
+      - ${KCPTUN_PORT}:29900/udp
     restart: always
+    volumes:
+      - "./kcptun-server.json:/etc/kcptun.json"
 
   shadowsocks:
     image: shadowsocks/shadowsocks-libev:v3.3.1
