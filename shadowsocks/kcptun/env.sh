@@ -11,6 +11,8 @@ else
     KCPTUN_PORT=${KCPTUN_PORT:-$((RANDOM%30000+10000))}
     SHADOWSOCK_PASSWORD=${SHADOWSOCK_PASSWORD:-$(tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1)}
     SHADOWSOCK_PORT=${SHADOWSOCK_PORT:-$((RANDOM%30000+10000))}
-    { echo "kcptun_port=${KCPTUN_PORT}"; echo "password=${SHADOWSOCK_PASSWORD}"; echo "port=${SHADOWSOCK_PORT}"; } >> "${THIS_DIR}/.options"
+    { echo "kcptun_port=${KCPTUN_PORT}"; \
+      echo "password=${SHADOWSOCK_PASSWORD}"; \
+      echo "port=${SHADOWSOCK_PORT}"; } >> "${THIS_DIR}/.options"
 fi
 export  KCPTUN_PORT SHADOWSOCK_PASSWORD SHADOWSOCK_PORT

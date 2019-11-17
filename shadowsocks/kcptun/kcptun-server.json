@@ -17,6 +17,6 @@
   "rcvwnd": 1024,
   "resend": 0,
   "sndwnd": 1024,
-  "sockbuf": 4194304,
+  "sockbuf": 8388608,
   "target": "shadowsocks:8388"
 }
