@@ -1,10 +1,11 @@
 version: "3"
 
-shadowsocks:
-  image: shadowsocks/shadowsocks-libev:v3.3.1
-  ports:
-    - "${SHADOWSOCK_PORT}:8388"
-  environment:
-    - METHOD=aes-256-gcm
-    - PASSWORD=${SHADOWSOCK_PASSWORD}
-  restart: always
+services: 
+  shadowsocks:
+    image: shadowsocks/shadowsocks-libev:v3.3.1
+    ports:
+      - "${SHADOWSOCK_PORT}:8388"
+    environment:
+      - METHOD=aes-256-gcm
+      - PASSWORD=${SHADOWSOCK_PASSWORD}
+    restart: always
