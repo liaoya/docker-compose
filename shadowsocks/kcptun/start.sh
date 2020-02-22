@@ -6,9 +6,7 @@ THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")
 
 function print_usage() {
-    local this_file
-    this_file=$(basename "${THIS_FILE}")
-    echo "${this_file} -h -c[lean]"
+    echo "$(basename "${BASH_SOURCE[0]}") -h -c[lean]"
 }
 
 CLEAN=0

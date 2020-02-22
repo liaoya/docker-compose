@@ -35,7 +35,7 @@ if [[ ${CLEAN} -gt 0 ]]; then
 fi
 if [[ ! -f "${THIS_DIR}/config.json" ]]; then
 #shellcheck disable=SC2002
-    cat "${THIS_DIR}/vmess${TYPE}.json" \
+    cat "${THIS_DIR}/vmess.json" \
         | jq ".inbounds[0].settings.clients[0].alterId=${V2RAY_ALTERID}" \
         | jq ".inbounds[0].port=${V2RAY_PORT}" \
         | jq ".inbounds[0].settings.clients[0].id=\"${V2RAY_UUID}\"" \
