@@ -8,4 +8,4 @@ RUN apk update \
 EXPOSE $PORT
 VOLUME /var/cache/git
 
-CMD ["/usr/local/bin/git-cache-http-server" "-c" "/data"]
+CMD ["node", "/usr/local/bin/git-cache-http-server"]
