@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  nginx:
+    image: library/nginx:1.17.9-alpine
+    ports:
+      - "8080:80"
+      - "8443:443"

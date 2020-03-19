@@ -14,8 +14,10 @@ services:
   shadowsocks:
     image: shadowsocks/shadowsocks-libev:v3.3.4
     ports:
-      - "${SHADOWSOCK_PORT}:8388"
+      - "${SHADOWSOCK_PORT}:8388/tcp"
+      - "${SHADOWSOCK_PORT}:8388/udp"
     environment:
+      - ARGS=--fast-open --reuse-port --no-delay
       - METHOD=aes-256-gcm
       - PASSWORD=${SHADOWSOCK_PASSWORD}
     restart: always
