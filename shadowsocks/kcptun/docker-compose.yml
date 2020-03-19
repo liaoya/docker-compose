@@ -4,7 +4,7 @@ version: "3"
 services: 
   kcptun:
     command: ["/bin/server", "-c", "/etc/kcptun.json"]
-    image: xtaci/kcptun:v20190924
+    image: xtaci/kcptun:v20200226
     ports:
       - ${KCPTUN_PORT}:29900/udp
     restart: always
@@ -12,7 +12,7 @@ services:
       - "./kcptun-server.json:/etc/kcptun.json"
 
   shadowsocks:
-    image: shadowsocks/shadowsocks-libev:v3.3.1
+    image: shadowsocks/shadowsocks-libev:v3.3.4
     ports:
       - "${SHADOWSOCK_PORT}:8388"
     environment:
