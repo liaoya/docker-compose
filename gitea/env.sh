@@ -3,7 +3,12 @@
 
 set +e
 
-GITEA_VERSION=${GITEA_VERSION:-1.11.0}
+GITEA_VERSION=${GITEA_VERSION:-$(curl -sL "https://api.github.com/repos/go-gitea/gitea/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')}
+if [[ -z ${GITEA_VERSION} ]]; then
+    GITEA_VERSION=1.11.3
+else
+    GITEA_VERSION=${GITEA_VERSION:1}
+fi
 GITEA_ADMIN=${GITEA_ADMIN:-giteadmin}
 GITEA_ADMIN_PASSWORD=${GITEA_ADMIN_PASSWORD:-admin123}
 if [[ -z ${DOMAIN} ]]; then

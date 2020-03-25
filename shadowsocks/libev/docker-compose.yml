@@ -2,7 +2,7 @@ version: "3"
 
 services: 
   shadowsocks:
-    image: shadowsocks/shadowsocks-libev:v3.3.4
+    image: shadowsocks/shadowsocks-libev:${SHADOWSOCKS_LIBEV_VERSION}
     ports:
       - "${SHADOWSOCK_PORT}:8388/tcp"
       - "${SHADOWSOCK_PORT}:8388/udp"

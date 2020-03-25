@@ -4,8 +4,8 @@
 
 Your need determine to use sqlite or mariadb at first
 
-- Run `bash sqlite/init.sh` to create gitea instance with sqlite database
-- Run `bash mariadb/init.sh` to create gitea instance with mariadb database
+- Run `bash run.sh start sqlite` to create gitea instance with sqlite database
+- Run `bash run.sh start mariadb` to create gitea instance with mariadb database
 - `create-demo-env.sh` to create a addtional demo user, group and repository
 
 ## Customeize Gitea

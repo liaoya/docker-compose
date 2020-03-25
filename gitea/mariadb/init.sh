@@ -1,16 +1,13 @@
 #!/bin/bash
-#shellcheck disable=SC1090
 
-set -a -e -x
+set -aex
 
 [[ $(command -v http) ]] || { echo "http and jq are required"; exit 1; }
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")
+#shellcheck disable=SC1090
 source "${THIS_DIR}/../env.sh"
-
-docker-compose -f "${THIS_DIR}/docker-compose.yml" up -d
-sleep 30s
 
 http --timeout 120 -f POST :13000/install \
      db_type=MySQL db_host="mariadb:3306" db_user=gitea db_passwd=gitea db_name=gitea \

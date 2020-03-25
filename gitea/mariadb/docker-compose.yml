@@ -1,43 +1,41 @@
-version: "2"
-
-volumes:
-  gitea:
-    external: false
-  mariadb:
-    driver: local
-
 services:
   gitea:
-    image: gitea/gitea:${GITEA_VERSION}
-    restart: always
-    depends_on: 
+    depends_on:
       - mariadb
     environment:
       - APP_NAME=Gitea Host
-      - RUN_MODE=prod
-      - DOMAIN=${DOMAIN}
-      - ROOT_URL=http://${DOMAIN}:13000
-      - SSH_PORT=10022
-      - DB_TYPE=mysql
       - DB_HOST=mariadb
       - DB_NAME=gitea
-      - DB_USER=gitea
       - DB_PASSWD=gitea
+      - DB_TYPE=mysql
+      - DB_USER=gitea
+      - DEFAULT_PRIVATE=private
       - DISABLE_REGISTRATION=true
+      - DOMAIN=${DOMAIN}
       - REQUIRE_SIGNIN_VIEW=true
+      - ROOT_URL=http://${DOMAIN}:13000
+      - RUN_MODE=prod
+      - SSH_PORT=10022
+    image: gitea/gitea:${GITEA_VERSION}
     ports:
-      - "13000:3000"
-      - "10022:22"
+      - '10022:22'
+      - '13000:3000'
+    restart: always
     volumes:
       - gitea:/data
-
   mariadb:
-    image: mariadb:10.4.11
-    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=gitea
       - MYSQL_USER=gitea
       - MYSQL_PASSWORD=gitea
       - MYSQL_DATABASE=gitea
+    image: mariadb:10.4.12
+    restart: always
     volumes:
       - mariadb:/var/lib/mysql
+version: '2'
+volumes:
+  gitea:
+    external: false
+  mariadb:
+    driver: local
