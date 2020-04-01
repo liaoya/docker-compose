@@ -19,14 +19,18 @@ ALL=0
 while getopts ":ha" opt; do
     case $opt in
     a)
-        ALL=1 ;;
+        ALL=1
+        ;;
     h)
-        print_usage; exit 0 ;;
+        print_usage
+        exit 0
+        ;;
     \?)
-        print_usage; exit 1 ;;
+        print_usage
+        exit 1
+        ;;
     esac
 done
-
 
 #shellcheck disable=SC1090
 source "${THIS_DIR}/env.sh"

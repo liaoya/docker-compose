@@ -5,6 +5,8 @@ services:
     depends_on:
       - mariadb
     environment:
+      - USER_UID=1000
+      - USER_GID=1000
 # default
       - APP_NAME=Gitea
       - RUN_MODE=prod
@@ -13,8 +15,8 @@ services:
       - DEFAULT_PRIVATE=private
 # server
       - DOMAIN=${DOMAIN}
-      - ROOT_URL=http://${DOMAIN}:13000
-      - SSH_PORT=10022
+      - ROOT_URL=https://${DOMAIN}
+      - SSH_PORT=${SSH_PORT}
 # database
       - CHARSET=utf8mb4
       - DB_HOST=mariadb
@@ -22,6 +24,7 @@ services:
       - DB_PASSWD=gitea
       - DB_TYPE=mysql
       - DB_USER=gitea
+      - LOG_SQL=false
 # service
       - DISABLE_REGISTRATION=true
       - REQUIRE_SIGNIN_VIEW=true
@@ -29,8 +32,8 @@ services:
       - ENABLED=false
     image: gitea/gitea:${GITEA_VERSION}
     ports:
-      - '10022:10022/tcp'
-      - '13000:3000/tcp'
+      - '${SSH_PORT}:${SSH_PORT}/tcp'
+      - '127.0.0.1:${HTTP_PORT}:${HTTP_PORT}/tcp'
     restart: always
     volumes:
       - gitea:/data

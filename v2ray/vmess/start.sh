@@ -17,11 +17,16 @@ CLEAN=0
 while getopts ":hc" opt; do
     case $opt in
     c)
-        CLEAN=1 ;;
+        CLEAN=1
+        ;;
     h)
-        print_usage; exit 0 ;;
+        print_usage
+        exit 0
+        ;;
     \?)
-        print_usage; exit 1 ;;
+        print_usage
+        exit 1
+        ;;
     esac
 done
 
@@ -34,12 +39,12 @@ if [[ ${CLEAN} -gt 0 ]]; then
     docker-compose -f "${THIS_DIR}/docker-compose.yml" down -v
 fi
 if [[ ! -f "${THIS_DIR}/config.json" ]]; then
-#shellcheck disable=SC2002
-    cat "${THIS_DIR}/vmess${TYPE}.json" \
-        | jq ".inbounds[0].settings.clients[0].alterId=${V2RAY_ALTERID}" \
-        | jq ".inbounds[0].port=${V2RAY_PORT}" \
-        | jq ".inbounds[0].settings.clients[0].id=\"${V2RAY_UUID}\"" \
-        | jq -S '.' > "${THIS_DIR}/config.json"
+    #shellcheck disable=SC2002
+    cat "${THIS_DIR}/vmess${TYPE}.json" |
+        jq ".inbounds[0].settings.clients[0].alterId=${V2RAY_ALTERID}" |
+        jq ".inbounds[0].port=${V2RAY_PORT}" |
+        jq ".inbounds[0].settings.clients[0].id=\"${V2RAY_UUID}\"" |
+        jq -S '.' >"${THIS_DIR}/config.json"
 fi
 
 if [[ -f "${THIS_DIR}/config.json" ]]; then

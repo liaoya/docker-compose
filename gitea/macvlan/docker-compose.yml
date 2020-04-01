@@ -1,0 +1,31 @@
+version: "2"
+
+networks:
+  macnet:
+    external: true
+
+volumes:
+  gitea:
+    external: false
+
+services:
+  gitea:
+    image: gitea/gitea:${GITEA_VERSION}
+    restart: always
+    environment:
+      - APP_NAME=Gitea
+      - RUN_MODE=prod
+      - DOMAIN=${DOMAIN}
+      - ROOT_URL=http://${DOMAIN}:3000
+      - SSH_PORT=22
+      - DB_TYPE=sqlite3
+      - DISABLE_REGISTRATION=true
+      - REQUIRE_SIGNIN_VIEW=true
+    networks:
+      macnet:
+        ipv4_address: ${IPADDR}
+    ports:
+      - "3000:3000"
+      - "22:22"
+    volumes:
+      - gitea:/data

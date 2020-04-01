@@ -1,0 +1,8 @@
+#!/bin/bash
+#shellcheck disable=SC2034
+
+IPADDR=${IPADDR:-192.168.2.15}
+DOMAIN=${IPADDR}
+HTTP_PORT=${HTTP_PORT:-3000}
+SSH_PORT=${SSH_PORT:-22}
+GITEA_URL=http://${DOMAIN}:${HTTP_PORT}/

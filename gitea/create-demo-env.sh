@@ -3,7 +3,10 @@
 
 set -a -e -x
 
-if [[ ! $(command -v http) ]] || [[ ! $(command -v jq) ]]; then echo "http and jq are required"; exit 1; fi
+if [[ ! $(command -v http) ]] || [[ ! $(command -v jq) ]]; then
+    echo "http and jq are required"
+    exit 1
+fi
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")

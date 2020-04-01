@@ -9,8 +9,9 @@ THIS_DIR=$(dirname "${THIS_FILE}")
 
 function check_command() {
     local _name
-    while (( $# )); do
-        _name=$1; shift
+    while (($#)); do
+        _name=$1
+        shift
         if [[ -z $(command -v "${_name}") ]]; then
             echo "${_name} is required"
             return 1
@@ -25,8 +26,7 @@ SHELLCHECK_RESULT="true"
 function run_shellcheck() {
     local _this_dir
     if [[ -d ${1} ]]; then
-        while IFS= read -r -d '' shellfile
-        do
+        while IFS= read -r -d '' shellfile; do
             run_shellcheck "${shellfile}"
         done < <(find "${1}" -iname "*.sh" -print0)
     else
@@ -42,8 +42,9 @@ if [[ $(command -v git) ]]; then git clean -X -f; fi
 if [[ $# -eq 0 ]]; then
     run_shellcheck "${THIS_DIR}"
 else
-    while (( $# )); do
-        target=$(readlink -f "${1}"); shift;
+    while (($#)); do
+        target=$(readlink -f "${1}")
+        shift
         run_shellcheck "${target}"
     done
 fi

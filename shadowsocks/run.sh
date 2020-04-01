@@ -1,4 +1,5 @@
 #!/bin/bash
+#shellcheck disable=SC1090
 
 set -aex
 
@@ -9,22 +10,27 @@ source "${THIS_DIR}/env.sh"
 
 function print_usage() {
     cat <<EOF
-Usage: $(basename "${BASH_SOURCE[0]}") -h -c <clean|restart|start|stop> <kcptun|libev>
+Usage: $(basename "${BASH_SOURCE[0]}") -h <clean|restart|start|stop> <kcptun|libev>
 EOF
 }
 
 while getopts ":h" opt; do
     case $opt in
     h)
-        print_usage; exit 0 ;;
+        print_usage
+        exit 0
+        ;;
     \?)
-        print_usage; exit 1 ;;
+        print_usage
+        exit 1
+        ;;
     esac
 done
-shift $((OPTIND-1))
+shift $((OPTIND - 1))
 
 if [[ $# -ne 2 ]] || [[ $1 != clean && $1 != restart && $1 != start && $1 != stop ]] || [[ ! -d $2 ]]; then
-    print_usage; exit 1
+    print_usage
+    exit 1
 fi
 
 if [[ -f "$2/env.sh" ]]; then source "$2/env.sh"; fi
