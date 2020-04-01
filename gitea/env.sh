@@ -1,7 +1,7 @@
 #!/bin/bash
 #shellcheck disable=SC2034
 
-set +e
+set +ae
 
 GITEA_VERSION=${GITEA_VERSION:-$(curl -sL "https://api.github.com/repos/go-gitea/gitea/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')}
 if [[ -z ${GITEA_VERSION} ]]; then
@@ -17,6 +17,7 @@ fi
 HTTP_PORT=${HTTP_PORT:-13000}
 SSH_PORT=${SSH_PORT:-10022}
 GITEA_URL=http://${DOMAIN}:${HTTP_PORT}/
+export DOMAIN GITEA_URL GITEA_VERSION HTTP_PORT SSH_PORT
 
 # GITEA_ADMIN=${GITEA_ADMIN:-giteadmin}
 # GITEA_ADMIN_PASSWORD=${GITEA_ADMIN_PASSWORD:-admin123}

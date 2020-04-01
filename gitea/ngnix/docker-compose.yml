@@ -16,7 +16,7 @@ services:
 # server
       - DOMAIN=${DOMAIN}
       - ROOT_URL=https://${DOMAIN}
-      - SSH_PORT=${SSH_PORT}
+      - SSH_PORT=22
 # database
       - CHARSET=utf8mb4
       - DB_HOST=mariadb
@@ -32,8 +32,8 @@ services:
       - ENABLED=false
     image: gitea/gitea:${GITEA_VERSION}
     ports:
-      - '${SSH_PORT}:${SSH_PORT}/tcp'
-      - '127.0.0.1:${HTTP_PORT}:${HTTP_PORT}/tcp'
+      - '${SSH_PORT}:22/tcp'
+      - '127.0.0.1:${HTTP_PORT}:3000/tcp'
     restart: always
     volumes:
       - gitea:/data

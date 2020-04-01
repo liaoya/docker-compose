@@ -11,3 +11,4 @@ Your need determine to use sqlite or mariadb at first
 ## Customeize Gitea
 
 Take a look at `env.sh`, overwrite these values before create gitea instance
+Change `/data/gitea/conf/app.ini` and modify `SSH_PORT         = 10022`

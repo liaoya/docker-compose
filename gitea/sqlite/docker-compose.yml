@@ -13,7 +13,7 @@ services:
       - RUN_MODE=prod
       - DOMAIN=${DOMAIN}
       - ROOT_URL=http://${DOMAIN}:13000
-      - SSH_PORT=10022
+      - SSH_PORT=22
       - DB_TYPE=sqlite3
       - DISABLE_REGISTRATION=true
       - REQUIRE_SIGNIN_VIEW=true
