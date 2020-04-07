@@ -7,7 +7,7 @@ indent_style = space
 [Vagrantfile]
 indent_size = 2
 
-[*.{json,yaml,yaml}]
+[*.{json,yaml,yml}]
 indent_size = 2
 
 [*.{py}]
@@ -16,3 +16,4 @@ indent_size = 4
 [*.sh]
 end_of_line = lf
 indent_size = 4
+indent_style = space

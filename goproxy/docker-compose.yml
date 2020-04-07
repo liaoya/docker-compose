@@ -1,0 +1,13 @@
+version: '3.0'
+
+volumes:
+  go:
+    driver: local
+
+services:
+  goproxy:
+    image: goproxy/goproxy
+    ports: 8081:8081
+    restart: always
+    volumes:
+      - go:/go
