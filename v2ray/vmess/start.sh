@@ -30,13 +30,11 @@ while getopts ":hc" opt; do
     esac
 done
 
-if [[ ${CLEAN} -gt 0 ]]; then
-    rm -f "${THIS_DIR}/config.json"
-fi
 #shellcheck disable=SC1090
 source "${THIS_DIR}/env.sh"
 if [[ ${CLEAN} -gt 0 ]]; then
     docker-compose -f "${THIS_DIR}/docker-compose.yml" down -v
+    rm -f "${THIS_DIR}/config.json"
 fi
 if [[ ! -f "${THIS_DIR}/config.json" ]]; then
     #shellcheck disable=SC2002

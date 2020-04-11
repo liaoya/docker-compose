@@ -10,7 +10,7 @@ indent_size = 2
 [*.{json,yaml,yml}]
 indent_size = 2
 
-[*.{py}]
+[*.py]
 indent_size = 4
 
 [*.sh]
