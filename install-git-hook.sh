@@ -10,7 +10,7 @@ set -e
 echo "Running validations..."
 bash ./run-shellcheck.sh .
 if [[ -n $(command -v shfmt) && -n $(shfmt -i 4 -d .) ]]; then
-    echo "Fail to run shfmt check, stage your change and run $(shfmt -i 4 -w .)"
+    echo "Fail to run shfmt check, stage your change and run \$(shfmt -i 4 -w .)"
     exit 1
 fi
 EOF

@@ -24,14 +24,15 @@ check_command shellcheck
 SHELLCHECK_RESULT="true"
 
 function run_shellcheck() {
-    local _this_dir
+    local _this_dir _this_file
     if [[ -d ${1} ]]; then
         while IFS= read -r -d '' shellfile; do
             run_shellcheck "${shellfile}"
-        done < <(find "${1}" -iname "*.sh" -print0)
+        done < <(find "${1}" -type f -iname "*.sh" -print0)
     else
         _this_dir=$(dirname "${1}")
-        if [[ ! -f "${_this_dir}/.shellcheck.disable" && ! -f "${_this_dir}/.${1}.shellcheck.disable" ]]; then
+        _this_file=$(basename "${1}")
+        if [[ ! -f "${_this_dir}/.shellcheck.disable" && ! -f "${_this_dir}/.${_this_file}.shellcheck.disable" ]]; then
             shellcheck "${1}" || SHELLCHECK_RESULT="false"
         fi
     fi
