@@ -28,7 +28,7 @@ function run_shellcheck() {
     if [[ -d ${1} ]]; then
         while IFS= read -r -d '' shellfile; do
             run_shellcheck "${shellfile}"
-        done < <(find "${1}" -iname "*.sh" -print0)
+        done < <(find "${1}" -type f -iname "*.sh" -print0)
     else
         _this_dir=$(dirname "${1}")
         if [[ ! -f "${_this_dir}/.shellcheck.disable" && ! -f "${_this_dir}/.${1}.shellcheck.disable" ]]; then
