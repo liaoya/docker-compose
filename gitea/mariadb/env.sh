@@ -1,0 +1,3 @@
+#!/bin/bash
+
+MARIADB_VERSION=${MARIADB_VERSION:-10.4.12}

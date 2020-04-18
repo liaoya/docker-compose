@@ -1,4 +1,5 @@
 #!/bin/bash
+#shellcheck disable=SC1090
 
 set -aex
 
@@ -9,8 +10,8 @@ set -aex
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")
-#shellcheck disable=SC1090
 source "${THIS_DIR}/../env.sh"
+source "${THIS_DIR}/env.sh"
 
 http --timeout 120 -f POST :13000/install \
     db_type=MySQL db_host="mariadb:3306" db_user=gitea db_passwd=gitea db_name=gitea \

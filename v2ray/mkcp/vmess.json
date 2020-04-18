@@ -4,56 +4,41 @@
     "error": "/var/log/v2ray/error.log",
     "loglevel": "warning"
   },
-  "dns": {},
-  "stats": {},
   "inbounds": [
     {
-      "port": 3333,
+      "port": 0,
       "protocol": "vmess",
       "settings": {
         "clients": [
           {
-            "id": "b5c149fa-00ef-4367-9707-2cc26a47246e",
-            "alterId": 32
+            "id": "",
+            "alterId": 0
           }
         ]
       },
-      "tag": "in-0",
       "streamSettings": {
         "network": "kcp",
         "security": "none",
-        "kcpSettings": {}
+        "tlsSettings": {"allowInsecure": true},
+        "kcpSettings": {
+          "mtu": 1350,
+          "tti": 50,
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": false,
+          "readBufferSize": 2,
+          "writeBufferSize": 2,
+          "header": {
+            "type": "wechat-video"
+          }
+        }
       }
     }
   ],
   "outbounds": [
     {
-      "tag": "direct",
       "protocol": "freedom",
       "settings": {}
-    },
-    {
-      "tag": "blocked",
-      "protocol": "blackhole",
-      "settings": {}
     }
-  ],
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "blocked"
-      }
-    ]
-  },
-  "policy": {},
-  "reverse": {},
-  "transport": {},
-  "log": {
-    "loglevel": "info"
-  }
+  ]
 }

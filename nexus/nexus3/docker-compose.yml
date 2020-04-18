@@ -11,7 +11,7 @@ services:
       INSTALL4J_ADD_VM_PARAMS: '-Xms2g -Xmx2g -XX:MaxDirectMemorySize=2g'
     ports:
       - "8081:8081"
-    image: sonatype/nexus3:3.18.1
+    image: sonatype/nexus3:3.21.2
     restart: always
     volumes:
       - data:/nexus-data
