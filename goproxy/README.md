@@ -1,3 +1,3 @@
 # README
 
-Nexus3 also support goproxy function
+Nexus3 also support goproxy function.
