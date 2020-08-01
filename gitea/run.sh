@@ -26,8 +26,12 @@ while getopts ":h" opt; do
 done
 shift $((OPTIND - 1))
 
-if [[ $# -ne 2 ]] || [[ $1 != clean && $1 != config && $1 != restart && $1 != start && $1 != stop ]] || [[ ! -d $2 ]]; then
+if [[ $# -ne 2 ]] || [[ $1 != clean && $1 != config && $1 != restart && $1 != start && $1 != stop ]]; then
     print_usage
+    exit 1
+fi
+if [[ ! -d $2 ]]; then
+    echo "$2 does not exist"
     exit 1
 fi
 

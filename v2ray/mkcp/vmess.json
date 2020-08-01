@@ -18,7 +18,7 @@
       },
       "streamSettings": {
         "network": "kcp",
-        "security": "none",
+        "security": "auto",
         "tlsSettings": {"allowInsecure": true},
         "kcpSettings": {
           "mtu": 1350,

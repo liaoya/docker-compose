@@ -4,7 +4,7 @@
 set +ae
 
 GITEA_VERSION=${GITEA_VERSION:-$(curl -sL "https://api.github.com/repos/go-gitea/gitea/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')}
-GITEA_VERSION=${GITEA_VERSION:1}
+GITEA_VERSION=${GITEA_VERSION:1.12.3}
 
 if [[ -z ${DOMAIN} ]]; then
     DOMAIN=$(hostname -f) || DOMAIN=$(hostname)
