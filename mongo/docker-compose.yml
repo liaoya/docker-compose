@@ -1,15 +1,21 @@
 version: '3.1'
 
+volumes:
+  db:
+    external: false
+
 services:
 
   mongo:
     image: docker.io/library/mongo:4.4.4-bionic
     # restart: always
     ports:
-      - 3000:3000
+      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - db:/data/db
 
   mongo-express:
     image: docker.io/library/mongo-express:0.54
