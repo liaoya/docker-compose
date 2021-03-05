@@ -6,8 +6,10 @@ volumes:
 
 services:
   goproxy:
+    command: ["-cacheDir", "/go", "-proxy", "https://goproxy.io"]
     image: goproxy/goproxy
-    ports: 8081:8081
+    ports: 
+      - 8081:8081
     restart: always
     volumes:
       - go:/go
