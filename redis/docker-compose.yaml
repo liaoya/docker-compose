@@ -1,0 +1,8 @@
+---
+version: "3"
+
+services: 
+  redis:
+    image: docker.io/library/redis:6.2.2
+    ports:
+      - 6379:6379
