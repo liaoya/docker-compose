@@ -1,16 +1,15 @@
 #!/bin/bash
-#shellcheck disable=SC1090
+#shellcheck disable=SC1091
 
 set -aex
 
 THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")
-#shellcheck disable=SC1090
 source "${THIS_DIR}/env.sh"
 
 function print_usage() {
     cat <<EOF
-Usage: $(basename "${BASH_SOURCE[0]}") -h <clean|restart|start|stop> <kcptun|libev>
+Usage: $(basename "${BASH_SOURCE[0]}") -h <clean|restart|start|stop> <kcptun|libev|rust>
 EOF
 }
 

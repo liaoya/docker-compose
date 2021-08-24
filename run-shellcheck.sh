@@ -1,5 +1,5 @@
 #!/bin/bash
-#shellcheck disable=SC1090
+#shellcheck disable=SC1091
 # Run this script to make every shell file is valid
 
 set -e

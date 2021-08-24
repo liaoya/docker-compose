@@ -3,7 +3,7 @@
 set -x
 
 function print_usage() {
-    cat << EOF
+    cat <<EOF
 Usage: $(basename "${BASH_SOURCE[0]}") -h volume ...
 EOF
 }
