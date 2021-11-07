@@ -6,7 +6,6 @@ volumes:
 
 services:
   db:
-    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_DATABASE: 'test'
@@ -14,11 +13,11 @@ services:
       MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: ''
       MYSQL_USER: 'test'
-    image: mysql:8.0.26
+    image: mariadb:10.6.4
     ports:
       - "3306:3306"
       - "33060:33060"
-    restart: always
+    # restart: always
     volumes:
       - db:/var/lib/mysql
 

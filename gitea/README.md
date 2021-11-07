@@ -2,7 +2,7 @@
 
 ## Create Gitea Instance
 
-Your need determine to use sqlite or mariadb at first
+Your need determine to use sqlite or mariadb at first. mariadb is recommended.
 
 - Run `bash run.sh start sqlite` to create gitea instance with sqlite database
 - Run `bash run.sh start mariadb` to create gitea instance with mariadb database

@@ -5,7 +5,7 @@ set +ae
 
 GITEA_VERSION=${GITEA_VERSION:-$(curl -sL "https://api.github.com/repos/go-gitea/gitea/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')}
 if [[ -z ${GITEA_VERSION} ]]; then
-    GITEA_VERSION=${GITEA_VERSION:-1.12.3}
+    GITEA_VERSION=${GITEA_VERSION:-1.14.6}
 else
     GITEA_VERSION=${GITEA_VERSION:1}
 fi
