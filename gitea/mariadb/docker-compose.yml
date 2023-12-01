@@ -41,7 +41,7 @@ services:
       - MYSQL_USER=gitea
       - MYSQL_PASSWORD=gitea
       - MYSQL_DATABASE=gitea
-    image: mariadb:10.4.12
+    image: mariadb:${MARIADB_VERSION}
     restart: always
     volumes:
       - mariadb:/var/lib/mysql
