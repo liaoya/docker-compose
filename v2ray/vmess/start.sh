@@ -33,7 +33,7 @@ done
 #shellcheck disable=SC1091
 source "${THIS_DIR}/env.sh"
 if [[ ${CLEAN} -gt 0 ]]; then
-    docker compose -f "${THIS_DIR}/docker compose.yml" down -v
+    docker compose -f "${THIS_DIR}/docker-compose.yml" down -v
     rm -f "${THIS_DIR}/config.json"
 fi
 if [[ ! -f "${THIS_DIR}/config.json" ]]; then
@@ -46,5 +46,5 @@ if [[ ! -f "${THIS_DIR}/config.json" ]]; then
 fi
 
 if [[ -f "${THIS_DIR}/config.json" ]]; then
-    docker compose -f "${THIS_DIR}/docker compose.yml" up -d
+    docker compose -f "${THIS_DIR}/docker-compose.yml" up -d
 fi

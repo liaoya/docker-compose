@@ -10,4 +10,4 @@ source "${THIS_DIR}/functions.sh"
 check_env
 #shellcheck disable=SC1091
 source "${THIS_DIR}/env.sh"
-docker compose -f "${THIS_DIR}/docker compose.yml" stop
+docker compose -f "${THIS_DIR}/docker-compose.yml" stop

@@ -12,7 +12,7 @@ THIS_FILE=$(readlink -f "${BASH_SOURCE[0]}")
 THIS_DIR=$(dirname "${THIS_FILE}")
 source "${THIS_DIR}/../env.sh"
 
-docker compose -f "${THIS_DIR}/docker compose.yml" up -d
+docker compose -f "${THIS_DIR}/docker-compose.yml" up -d
 sleep 10s
 
 http --timeout 120 -f POST :13000/install \
