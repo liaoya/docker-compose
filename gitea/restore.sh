@@ -22,7 +22,8 @@ while getopts ":h" opt; do
 done
 
 while (($#)); do
-    volume=$1
+    filename=$1
+    volume=${filename:0:${#filename}-22}
     shift
-    docker run -it --rm -v "${volume}":/volume -v "${PWD}":/backup alpine sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/${volume}.tar.bz2"
+    docker run -it --rm -v "${volume}":/volume -v "${PWD}":/backup alpine sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/${filename}"
 done
