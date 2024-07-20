@@ -7,14 +7,14 @@ Some good references
 
 - <https://github.com/wurstmeister/kafka-docker>
 - <https://github.com/provectus/kafka-ui>
-- <https://github.com/conduktor/kafka-stack-docker-compose>
+- <https://github.com/conduktor/kafka-stack-docker compose>
 - <https://www.baeldung.com/ops/kafka-docker-setup>
 
 ## Usage
 
 ```bash
 # Attach to kafka service
-docker-compose exec kafka bash
+docker compose exec kafka bash
 
 cd /opt/kafka
 

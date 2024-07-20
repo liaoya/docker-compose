@@ -34,14 +34,14 @@ fi
 
 if [[ -f "$2/env.sh" ]]; then source "$2/env.sh"; fi
 if [[ $1 == clean ]]; then
-    docker-compose -f "${2}/docker-compose.yml" down -v
+    docker compose -f "${2}/docker compose.yml" down -v
     rm -f "${2}/.options"
 elif [[ $1 == restart ]]; then
-    docker-compose -f "${2}/docker-compose.yml" restart
+    docker compose -f "${2}/docker compose.yml" restart
 elif [[ $1 == start ]]; then
-    docker-compose -f "${2}/docker-compose.yml" up -d
+    docker compose -f "${2}/docker compose.yml" up -d
 elif [[ $1 == stop ]]; then
-    docker-compose -f "${2}/docker-compose.yml" stop
+    docker compose -f "${2}/docker compose.yml" stop
 else
     echo "Unknown opereation"
 fi

@@ -35,7 +35,7 @@ done
 #shellcheck disable=SC1091
 source "${THIS_DIR}/env.sh"
 
-docker-compose -f "${THIS_DIR}/docker-compose.yml" down -v
+docker compose -f "${THIS_DIR}/docker compose.yml" down -v
 rm -f "${THIS_DIR}/config.json"
 if [[ ${ALL} -gt 0 ]]; then
     rm -f "${THIS_DIR}/.options"

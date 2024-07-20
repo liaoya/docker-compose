@@ -1,3 +1,3 @@
 # README
 
-My various docker-compose for deployment
+My various docker compose for deployment

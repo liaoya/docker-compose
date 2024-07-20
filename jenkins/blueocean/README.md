@@ -3,7 +3,7 @@
 ## Run
 
 ```bash
-docker-compose run -d --rm --service-ports -u root jenkins
+docker compose run -d --rm --service-ports -u root jenkins
 ```
 
 ```bash

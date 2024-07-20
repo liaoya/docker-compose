@@ -11,6 +11,6 @@ function check_command() {
 
 function check_env() {
     check_command docker
-    check_command docker-compose
+    check_command docker compose
     check_command jq
 }
